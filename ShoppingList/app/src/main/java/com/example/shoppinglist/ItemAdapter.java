@@ -32,7 +32,16 @@ public class ItemAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_item_view, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         return new ItemViewHolder(v);
     }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        ItemViewHolder ivh = (ItemViewHolder) holder;
+        ivh.getItemTextView().setText(itemData.get(position));
+    }
+
+    @Override
+    public int getItemCount() { return itemData.size(); }
 }
