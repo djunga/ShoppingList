@@ -16,7 +16,11 @@ public class ItemDialog extends DialogFragment {
         void didFinishItemDialog(Item finishedItem);
     }
 
-    public ItemDialog() {}  // Empty constructor
+    public ItemDialog(Item item) {
+        if(item == null) {
+            selected_item = new Item();
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,9 +36,10 @@ public class ItemDialog extends DialogFragment {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                selected_item.setCategory(edit_name.toString());
+                selected_item.setName(edit_name.toString());
                 selected_item.setCategory(edit_category.toString());
-                saveItem(selected_item);
+                //saveItem(selected_item);
+                getDialog().dismiss();
             }
         });
         return view;

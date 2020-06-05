@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ShoppingListDataSource {
     private SQLiteDatabase database;
@@ -96,5 +97,21 @@ public class ShoppingListDataSource {
             itemNames = new ArrayList<String>();
         }
         return itemNames;
+    }
+
+    public Item getSpecificItem(int id) {
+        Item item = new Item();
+        String query = "SELECT  * FROM contact WHERE _id =" + id;
+        Cursor cursor = database.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            item.setItemID(cursor.getInt(0));
+            item.setName(cursor.getString(1));
+            item.setCategory(cursor.getString(2));
+  /*          item.setDescription(cursor.getString(3));
+            item.setPrice(cursor.getFloat(4));*/
+            cursor.close();
+        }
+        return item;
     }
 }
