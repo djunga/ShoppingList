@@ -1,14 +1,25 @@
 package com.example.shoppinglist;
 
 public class Item {
+    private int itemID;
     private String category;
     private String name;
     private String description;
+    private String categoryImgSrc;
     private float price;
     private boolean purchased;
 
     public Item( ) {
+        itemID = -1;
         category = "None";
+    }
+
+    public int getItemID() {
+        return itemID;
+    }
+
+    public void setItemID(int i) {
+        itemID = i;
     }
 
     public String getCategory() {
@@ -17,6 +28,14 @@ public class Item {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getCategoryImgSrc() {
+        return categoryImgSrc;
+    }
+
+    public void setCategoryImgSrc(String imgsrc) {
+        this.categoryImgSrc = imgsrc;
     }
 
     public String getName() {
