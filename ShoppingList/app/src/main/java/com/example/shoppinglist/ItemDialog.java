@@ -1,3 +1,4 @@
+/*
 package com.example.shoppinglist;
 
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class ItemDialog extends DialogFragment {
             public void onClick(View arg0) {
                 selected_item.setName(edit_name.toString());
                 selected_item.setCategory(edit_category.toString());
+                //this.notifyDataSetChanged();
                 //saveItem(selected_item);
                 getDialog().dismiss();
             }
@@ -50,3 +52,4 @@ public class ItemDialog extends DialogFragment {
         getDialog().dismiss();
     }
 }
+*/

@@ -1,47 +1,68 @@
 package com.example.shoppinglist;
 
 import android.content.Context;
-import android.content.Intent;
+import android.database.Cursor;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.GroceryViewHolder> {
+    private Context mContext;
+    private Cursor mCursor;
 
-import java.util.ArrayList;
+    public ItemAdapter(Context context, Cursor cursor) {
+        mContext = context;
+        mCursor = cursor;
+    }
 
-public class ItemAdapter extends RecyclerView.Adapter {
-    private ArrayList<String> itemData;
+    public class GroceryViewHolder extends RecyclerView.ViewHolder {
+        public TextView nameText;
+        public TextView countText;
 
-    public class ItemViewHolder extends RecyclerView.ViewHolder {
-        public TextView textViewItem;
-        public ItemViewHolder(@NonNull View itemView) {
+        public GroceryViewHolder(View itemView) {
             super(itemView);
-            //textViewItem = itemView.findViewById(R.id.textView...);
+
+            nameText = itemView.findViewById(R.id.textview_name_item);
+            countText = itemView.findViewById(R.id.textview_amount_item);
+        }
+    }
+
+    @Override
+    public GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        View view = inflater.inflate(R.layout.grocery_item, parent, false);
+        return new GroceryViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(GroceryViewHolder holder, int position) {
+        if (!mCursor.moveToPosition(position)) {
+            return;
         }
 
-        public TextView getItemTextView() { return textViewItem;}
-    }
+        String name = mCursor.getString(mCursor.getColumnIndex(ShoppingListContract.ShoppingListEntry.COLUMN_NAME));
+        int amount = mCursor.getInt(mCursor.getColumnIndex(ShoppingListContract.ShoppingListEntry.COLUMN_PRICE));
 
-    public ItemAdapter(ArrayList<String> arrayList) { itemData = arrayList;}
-
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-        return new ItemViewHolder(v);
+        holder.nameText.setText(name);
+        holder.countText.setText(String.valueOf(amount));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ItemViewHolder ivh = (ItemViewHolder) holder;
-        ivh.getItemTextView().setText(itemData.get(position));
+    public int getItemCount() {
+        return mCursor.getCount();
     }
 
-    @Override
-    public int getItemCount() { return itemData.size(); }
+    public void swapCursor(Cursor newCursor) {
+        if (mCursor != null) {
+            mCursor.close();
+        }
+
+        mCursor = newCursor;
+
+        if (newCursor != null) {
+            notifyDataSetChanged();
+        }
+    }
 }
