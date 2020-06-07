@@ -29,6 +29,7 @@ public class ItemDialog extends DialogFragment {
             @Override
             public void onClick(View arg0) {
                 listener.applyTexts(edit_name.getText().toString(), edit_category.getText().toString());
+                com.example.shoppinglist.MainActivity.newItem();
                 getDialog().dismiss();
             }
         });
