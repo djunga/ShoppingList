@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.GroceryViewHolder> {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ShoppingListViewHolder> {
     private Context mContext;
     private Cursor mCursor;
 
@@ -17,11 +17,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.GroceryViewHol
         mCursor = cursor;
     }
 
-    public class GroceryViewHolder extends RecyclerView.ViewHolder {
+    public class ShoppingListViewHolder extends RecyclerView.ViewHolder {
         public TextView nameText;
         public TextView countText;
 
-        public GroceryViewHolder(View itemView) {
+        public ShoppingListViewHolder(View itemView) {
             super(itemView);
 
             nameText = itemView.findViewById(R.id.textview_name_item);
@@ -30,14 +30,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.GroceryViewHol
     }
 
     @Override
-    public GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ShoppingListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.grocery_item, parent, false);
-        return new GroceryViewHolder(view);
+        return new ShoppingListViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(GroceryViewHolder holder, int position) {
+    public void onBindViewHolder(ShoppingListViewHolder holder, int position) {
         if (!mCursor.moveToPosition(position)) {
             return;
         }

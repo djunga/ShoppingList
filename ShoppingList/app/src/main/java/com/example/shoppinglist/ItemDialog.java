@@ -1,6 +1,6 @@
-/*
 package com.example.shoppinglist;
 
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,16 +11,16 @@ import android.widget.EditText;
 import androidx.fragment.app.DialogFragment;
 
 public class ItemDialog extends DialogFragment {
-
-    Item selected_item;
-    public interface SaveItemListener {
-        void didFinishItemDialog(Item finishedItem);
-    }
+    private Item selected_item;
+    private boolean done;
+    private EditText edit_name;
 
     public ItemDialog(Item item) {
+        super();
         if(item == null) {
             selected_item = new Item();
         }
+        done = false;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ItemDialog extends DialogFragment {
 
         getDialog().setTitle("Edit Item");
 
-        final EditText edit_name = view.findViewById(R.id.editTextName);
+        edit_name = view.findViewById(R.id.editTextName);
         final EditText edit_category = view.findViewById(R.id.editTextCategory);
         Button button_save = view.findViewById(R.id.buttonSave);
 
@@ -39,17 +39,21 @@ public class ItemDialog extends DialogFragment {
             public void onClick(View arg0) {
                 selected_item.setName(edit_name.toString());
                 selected_item.setCategory(edit_category.toString());
-                //this.notifyDataSetChanged();
-                //saveItem(selected_item);
+                done = true;
                 getDialog().dismiss();
             }
         });
         return view;
     }
-    private void saveItem(Item item) {
-        SaveItemListener activity = (SaveItemListener) getActivity();
-        activity.didFinishItemDialog(item);
-        getDialog().dismiss();
+
+    public String getNameText() {
+        return edit_name.toString();
     }
+
+    public void setNameText(String str) {
+        edit_name.setText(str);
+    }
+
+    public boolean getDone() { return done; }
+    public void setDone(boolean b) { done = b; }
 }
-*/

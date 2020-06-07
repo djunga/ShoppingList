@@ -23,32 +23,16 @@
             android:textSize="50sp" />
 
         <Button
-            android:id="@+id/button_decrease"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textview_amount"
-            android:layout_alignBottom="@+id/textview_amount"
-            android:layout_toStartOf="@+id/textview_amount"
-            android:text="-" />
-
-        <Button
-            android:id="@+id/button_increase"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textview_amount"
-            android:layout_alignBottom="@+id/textview_amount"
-            android:layout_toEndOf="@+id/textview_amount"
-            android:text="+" />
-
-        <Button
-            android:id="@+id/button_add"
+            android:id="@+id/button_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/button_increase"
-            android:layout_alignBottom="@+id/button_increase"
+            android:layout_above="@+id/recyclerview"
+            android:layout_below="@+id/edittext_name"
+            android:layout_marginBottom="15dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/button_increase"
-            android:text="add" />
+            android:text="new" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
