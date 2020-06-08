@@ -12,7 +12,7 @@ import androidx.fragment.app.DialogFragment;
 
 public class ItemDialog extends DialogFragment {
     private EditText edit_name;
-    private EditText edit_category;
+    private EditText edit_price;
     private MyListener listener;
 
     @Override
@@ -22,13 +22,13 @@ public class ItemDialog extends DialogFragment {
         getDialog().setTitle("Edit Item");
 
         edit_name = view.findViewById(R.id.editTextName);
-        edit_category = view.findViewById(R.id.editTextCategory);
+        edit_price = view.findViewById(R.id.editTextPrice);
         Button button_save = view.findViewById(R.id.buttonSave);
 
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                listener.applyTexts(edit_name.getText().toString(), edit_category.getText().toString());
+                listener.applyTexts(edit_name.getText().toString(), edit_price.getText().toString());
                 com.example.shoppinglist.MainActivity.newItem();
                 getDialog().dismiss();
             }

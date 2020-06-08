@@ -24,8 +24,6 @@ import androidx.fragment.app.FragmentManager;
 public class MainActivity extends AppCompatActivity implements ItemDialog.MyListener {
     private static SQLiteDatabase mDatabase;
     private static ItemAdapter mAdapter;
-    //private EditText edit_name;
-    private EditText edit_category;
     private static String edit_name;
     private String category;
     private TextView nameText;
@@ -48,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements ItemDialog.MyList
         mAdapter = new ItemAdapter(this, getAllItems());
         recyclerView.setAdapter(mAdapter);
         itemList = new ArrayList<>();
-        //recyclerView.setAdapter(mAdapter);
         initNewButton();
     }
 
@@ -57,22 +54,17 @@ public class MainActivity extends AppCompatActivity implements ItemDialog.MyList
         edit_name = name;
     }
 
-
     private void initNewButton() {
         final Button buttonNew = findViewById(R.id.button_new);
         buttonNew.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 itemDialog = new ItemDialog();
                 itemDialog.show(getSupportFragmentManager(), "New Item");
-                Log.d("INITNEWBUTTON", "before bool");
             }
         });
     }
 
     public static void newItem() {
-        Log.d("NEWITEM", "inside");
-        //edit_name = findViewById(R.id.editTextName);
-        //edit_name.setText(name);
         if (edit_name.length() == 0) {
             return;
         }
@@ -81,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements ItemDialog.MyList
         cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_NAME, name);
         mDatabase.insert(ShoppingListContract.ShoppingListEntry.TABLE_NAME, null, cv);
         mAdapter.swapCursor(getAllItems());
-        //edit_name.getText().clear();
     }
     private static Cursor getAllItems() {
         return mDatabase.query(

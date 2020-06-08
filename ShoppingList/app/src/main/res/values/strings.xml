@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Shopping List</string>
+
+    <string-array name="categories">
+        <item>Clothes</item>
+        <item>Food</item>
+        <item>Books</item>
+    </string-array>
 </resources>
