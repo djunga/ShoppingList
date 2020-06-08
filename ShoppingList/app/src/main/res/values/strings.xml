@@ -6,4 +6,12 @@
         <item>Food</item>
         <item>Books</item>
     </string-array>
+
+    <string name="name_hint">Item Name</string>
+    <string name="category_label">Item Category:</string>
+    <string name="dialog_title">Shopping List</string>
+    <string name="description_hint">Description</string>
+    <string name="price_hint">Estimated Price</string>
+    <string name="purchased_label">Purchased</string>
+    <string name="save_button_label">save</string>
 </resources>
