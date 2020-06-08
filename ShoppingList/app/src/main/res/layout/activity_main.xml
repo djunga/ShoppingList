@@ -7,37 +7,31 @@
     android:padding="16dp"
     tools:context="com.example.shoppinglist.MainActivity">
 
-        <EditText
-            android:id="@+id/edittext_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/textview_amount"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edittext_name"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="8dp"
-            android:text="0"
-            android:textSize="50sp" />
+            android:layout_height="537dp"
 
-        <Button
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_below="@+id/button_new"
+            android:layout_marginBottom="35dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="31dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_new"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/recyclerview"
-            android:layout_below="@+id/edittext_name"
-            android:layout_marginBottom="15dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/button_increase"
-            android:text="new" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/textview_amount" />
+
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="161dp"
+            android:layout_marginTop="40dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_add_24" />
 
 </RelativeLayout>

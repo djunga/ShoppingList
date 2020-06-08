@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements ItemDialog.MyList
     }
 
     private void initNewButton() {
-        final Button buttonNew = findViewById(R.id.button_new);
+        final FloatingActionButton buttonNew = findViewById(R.id.button_new);
         buttonNew.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 itemDialog = new ItemDialog();
