@@ -21,13 +21,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ShoppingListVi
 
     public class ShoppingListViewHolder extends RecyclerView.ViewHolder {
         public TextView nameText;
-        public TextView countText;
 
         public ShoppingListViewHolder(View itemView) {
             super(itemView);
 
             nameText = itemView.findViewById(R.id.textview_main_name);
-            countText = itemView.findViewById(R.id.textview_main_amount);
         }
     }
 
@@ -48,7 +46,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ShoppingListVi
         String name = mCursor.getString(mCursor.getColumnIndex(ShoppingListContract.ShoppingListEntry.COLUMN_NAME));
         int amount = mCursor.getInt(mCursor.getColumnIndex(ShoppingListContract.ShoppingListEntry.COLUMN_PRICE));
         holder.nameText.setText(name);
-        holder.countText.setText(String.valueOf(amount));
     }
 
     @Override

@@ -2,14 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
-
-    <TextView
-        android:id="@+id/textview_main_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="30sp" />
+    android:layout_margin="8dp"
+    android:background="#CDCAC7">
 
     <TextView
         android:id="@+id/textview_main_name"

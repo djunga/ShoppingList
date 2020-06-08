@@ -4,22 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:backgroundTint="#CFFFFF"
     android:padding="16dp"
     tools:context="com.example.shoppinglist.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
-            android:layout_width="wrap_content"
-            android:layout_height="537dp"
+            android:layout_width="395dp"
+            android:layout_height="547dp"
 
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
 
             android:layout_below="@+id/button_new"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:layout_marginEnd="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="31dp" />
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="22dp"
+            android:background="#FFFFFF"
+            android:padding="4dp"
+            android:scrollbars="vertical" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_new"
