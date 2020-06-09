@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Shopping List</string>
 
+    <string name="dollar_prefix">Prefix%1$s</string>
+
     <string-array name="categories">
         <item>Clothes</item>
         <item>Food</item>
@@ -14,4 +16,6 @@
     <string name="price_hint">Estimated Price</string>
     <string name="purchased_label">Purchased</string>
     <string name="save_button_label">save</string>
+    <string name="show_details">show details</string>
+    <string name="hide_details">hide details</string>
 </resources>

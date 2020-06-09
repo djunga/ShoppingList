@@ -31,13 +31,10 @@ public class MainActivity extends AppCompatActivity implements ItemDialog.MyList
     private static String edit_category;
     private static String edit_description;
     private static float price;
-    //private static String category_imgsrc;
     private static boolean purchased;
 
-    //private String category;
     private TextView nameText;
     private Button button_save;
-    //private static int mAmount = 0;
     public static ArrayList<Item> itemList;
     private ItemDialog itemDialog;
 
@@ -101,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements ItemDialog.MyList
             }
         });
     }
+
+
 
     public static void newItem() {
         if (edit_name.length() == 0) {

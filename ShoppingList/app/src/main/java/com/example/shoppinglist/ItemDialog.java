@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,6 +47,7 @@ public class ItemDialog extends DialogFragment {
         purchased = view.findViewById(R.id.checkBoxPurchased);
         Button button_save = view.findViewById(R.id.buttonSave);
 
+
         if(selectedItem != null) {
             edit_name.setText(selectedItem.getName());
             edit_price.setText(selectedItem.getPrice()+"");
@@ -74,14 +76,12 @@ public class ItemDialog extends DialogFragment {
             public void onClick(View arg0) {
                 ContentValues newCV = new ContentValues();
                 newCV.put("name", edit_name.getText().toString());
-                newCV.put("price", edit_price.getText().toString());
+                String p = edit_price.getText().toString();
+                newCV.put("price", p);
                 newCV.put("description", edit_description.getText().toString());
                 newCV.put("category", spinner.getSelectedItem().toString());
-                //if(purchased.isChecked()) { purchased = true;}
                 if(purchased.isChecked()) { newCV.put("purchased", "true");}
                 else { newCV.put("purchased", "false"); }
-                String p = purchased.getText().toString();
-                //newCV.put("purchased", purchased.getText().toString());
                 listener.applyChanges(newCV);
                 if(selectedItem == null) {
                     com.example.shoppinglist.MainActivity.newItem();
@@ -92,30 +92,13 @@ public class ItemDialog extends DialogFragment {
                 getDialog().dismiss();
             }
         });
+
+
+
+
         return view;
     }
 
-/*    public ContentValues generateOldCV(Item item) {
-        *//*
-        * Here we generate a set of values, numbered:
-        * 0. name
-        * 1. category
-        * 2. description
-        * 3. categoryimgsrc
-        * 4. price
-        * 5. purchased
-        * *//*
-        ContentValues cv = new ContentValues();
-        if(item == null) {}
-        else {
-                cv.put("name", item.getName());
-                cv.put("category", item.getCategory());
-                cv.put("description", item.getDescription());
-                cv.put("categoryimgsrc", item.getCategoryImgSrc());
-                cv.put("price", item.getPrice());
-        }
-        return cv;
-    }*/
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

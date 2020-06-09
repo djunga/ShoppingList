@@ -2,30 +2,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#CFFFFF"
-    android:padding="16dp"
+    android:background="@drawable/shopping1"
+    android:backgroundTint="@color/system_transparent"
+    android:padding="4dp"
     tools:context="com.example.shoppinglist.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
-            android:layout_width="395dp"
-            android:layout_height="547dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
+            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
 
-            android:layout_below="@+id/button_new"
+            android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="1dp"
             android:layout_marginEnd="0dp"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="22dp"
-            android:background="#FFFFFF"
+            android:layout_marginTop="88dp"
+            android:background="#EAFAFF"
             android:padding="4dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_new"
@@ -35,8 +38,8 @@
 
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="161dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="330dp"
+            android:layout_marginTop="66dp"
             android:clickable="true"
             app:srcCompat="@drawable/ic_baseline_add_24" />
 
