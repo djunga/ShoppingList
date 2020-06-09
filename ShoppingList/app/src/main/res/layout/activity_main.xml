@@ -24,7 +24,7 @@
             android:layout_marginEnd="0dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="88dp"
-            android:background="#EAFAFF"
+            android:background="#2FAE41"
             android:padding="4dp"
             android:scrollbars="vertical"
             app:layout_constraintStart_toStartOf="parent" />
@@ -40,6 +40,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="330dp"
             android:layout_marginTop="66dp"
+            android:backgroundTint="#2FAE14"
             android:clickable="true"
             app:srcCompat="@drawable/ic_baseline_add_24" />
 

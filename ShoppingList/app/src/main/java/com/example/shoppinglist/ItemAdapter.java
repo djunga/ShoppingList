@@ -104,6 +104,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ShoppingListVi
         String description = mCursor.getString(mCursor.getColumnIndex(ShoppingListContract.ShoppingListEntry.COLUMN_DESCRIPTION));
         String category = mCursor.getString(mCursor.getColumnIndex(ShoppingListContract.ShoppingListEntry.COLUMN_CATEGORY));
         String purchased_str = mCursor.getString(mCursor.getColumnIndex(ShoppingListContract.ShoppingListEntry.COLUMN_PURCHASED));
+        if(purchased_str.equals("1")) { purchased_str = "true"; }
+        else { purchased_str = "false";}
         boolean purchased = Boolean.parseBoolean(purchased_str);
         holder.nameText.setText(name);
         holder.priceText.setText("$"+p);
