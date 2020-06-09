@@ -13,5 +13,9 @@ public class ShoppingListContract {
         public static final String COLUMN_NAME = "itemname";
         public static final String COLUMN_PRICE = "price";
         public static final String COLUMN_CATEGORY = "itemcategory";
+        //// Added this stuff:
+        public static final String COLUMN_DESCRIPTION = "itemdescription";
+        //public static final String COLUMN_IMAGESRC = "categoryimagesrc";
+        public static final String COLUMN_PURCHASED = "purchased";
     }
 }

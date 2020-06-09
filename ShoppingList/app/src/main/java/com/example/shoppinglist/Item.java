@@ -5,7 +5,7 @@ public class Item {
     private String category;
     private String name;
     private String description;
-    private String categoryImgSrc;
+    //private String categoryImgSrc;
     private float price;
     private boolean purchased;
 
@@ -30,13 +30,13 @@ public class Item {
         this.category = category;
     }
 
-    public String getCategoryImgSrc() {
+/*    public String getCategoryImgSrc() {
         return categoryImgSrc;
     }
 
     public void setCategoryImgSrc(String imgsrc) {
         this.categoryImgSrc = imgsrc;
-    }
+    }*/
 
     public String getName() {
         return name;

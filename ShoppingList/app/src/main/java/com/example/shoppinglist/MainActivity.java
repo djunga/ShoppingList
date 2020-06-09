@@ -28,10 +28,16 @@ public class MainActivity extends AppCompatActivity implements ItemDialog.MyList
     private static SQLiteDatabase mDatabase;
     private static ItemAdapter mAdapter;
     private static String edit_name;
-    private String category;
+    private static String edit_category;
+    private static String edit_description;
+    private static float price;
+    //private static String category_imgsrc;
+    private static boolean purchased;
+
+    //private String category;
     private TextView nameText;
     private Button button_save;
-    private static int mAmount = 0;
+    //private static int mAmount = 0;
     public static ArrayList<Item> itemList;
     private ItemDialog itemDialog;
 
@@ -77,8 +83,13 @@ public class MainActivity extends AppCompatActivity implements ItemDialog.MyList
     }
 
     @Override
-    public void applyTexts(String name, String category) {
-        edit_name = name;
+    public void applyChanges(ContentValues cv) {
+        //cv.put(edit_name, );
+        edit_name = (String) cv.get("name");
+        edit_category = (String) cv.get("category");
+        edit_description = (String) cv.get("description");
+        price = (float) Float.parseFloat((String) cv.get("price"));
+        purchased = (boolean) Boolean.parseBoolean((String) cv.get("purchased"));
     }
 
     private void initNewButton() {
@@ -95,13 +106,23 @@ public class MainActivity extends AppCompatActivity implements ItemDialog.MyList
         if (edit_name.length() == 0) {
             return;
         }
-        String name = edit_name;
         Item new_item = new Item();
-        new_item.setName(name);
+        new_item.setName(edit_name);
+        new_item.setCategory(edit_category);
+        new_item.setPrice(price);
+        new_item.setDescription(edit_description);
+        //new_item.setCategoryImgSrc(category_imgsrc);
+        new_item.setPurchased(purchased);
+
         itemList.add(0, new_item);
 
         ContentValues cv = new ContentValues();
-        cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_NAME, name);
+        cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_NAME, edit_name);
+        cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_CATEGORY, edit_category);
+        cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_DESCRIPTION, edit_description);
+        //cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_IMAGESRC, category_imgsrc);
+        cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_PRICE, price);
+        cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_PURCHASED, purchased);
         long id = mDatabase.insert(ShoppingListContract.ShoppingListEntry.TABLE_NAME, null, cv);
         new_item.setItemID((int) id);
         removeBadItems();
@@ -111,9 +132,18 @@ public class MainActivity extends AppCompatActivity implements ItemDialog.MyList
     public static void editSelectedItem(Item item) {
         removeBadItems();
         item.setName(edit_name);
+        item.setCategory(edit_category);
+        item.setPrice(price);
+        item.setDescription(edit_description);
+        //item.setCategoryImgSrc(category_imgsrc);
+        item.setPurchased(purchased);
         ContentValues cv = new ContentValues();
         cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_NAME, edit_name);
-        //String sql_statement = "UPDATE shopping_list SET ContactName = 'Alfred Schmidt', City= 'Frankfurt' WHERE CustomerID = 1;"
+        cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_CATEGORY, edit_category);
+        cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_DESCRIPTION, edit_description);
+        //cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_IMAGESRC, category_imgsrc);
+        cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_PRICE, price);
+        cv.put(ShoppingListContract.ShoppingListEntry.COLUMN_PURCHASED, purchased);
         String where = "_id=" +item.getItemID();
         mDatabase.update("shopping_list", cv, where, null);
         mAdapter.swapCursor(getAllItems());

@@ -12,9 +12,8 @@ public class ShoppingListDBHelper extends SQLiteOpenHelper {
     // Database creation sql statement
     private static final String CREATE_TABLE_SHOPPING_LIST =
             "create table shopping_list (_id integer primary key autoincrement, "
-            + "itemname text not null, itemcategory text, "
-            + "purchased boolean, price int, "
-            + "categoryimagesrc text);";
+            + "itemname text not null, itemcategory text, itemdescription text, "
+            + "purchased boolean, price float);";
 
     public ShoppingListDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
