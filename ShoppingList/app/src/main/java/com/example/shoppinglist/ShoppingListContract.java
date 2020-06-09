@@ -15,11 +15,3 @@ public class ShoppingListContract {
         public static final String COLUMN_CATEGORY = "itemcategory";
     }
 }
-
-
-/*
-    private static final String CREATE_TABLE_SHOPPING_LIST =
-            "create table shopping_list (_id integer primary key autoincrement, "
-                    + "itemname text not null, itemcategory text, "
-                    + "purchased boolean, price int, "
-                    + "categoryimagesrc text);";*/

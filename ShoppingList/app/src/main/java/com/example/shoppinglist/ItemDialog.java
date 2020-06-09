@@ -14,6 +14,14 @@ public class ItemDialog extends DialogFragment {
     private EditText edit_name;
     private EditText edit_price;
     private MyListener listener;
+    private Item selectedItem = null;
+
+    public ItemDialog() {
+        super();
+    }
+    public ItemDialog(Item item) {
+        selectedItem = item;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,11 +33,20 @@ public class ItemDialog extends DialogFragment {
         edit_price = view.findViewById(R.id.editTextPrice);
         Button button_save = view.findViewById(R.id.buttonSave);
 
+        if(selectedItem != null) {
+            edit_name.setText(selectedItem.getName());
+        }
+
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 listener.applyTexts(edit_name.getText().toString(), edit_price.getText().toString());
-                com.example.shoppinglist.MainActivity.newItem();
+                if(selectedItem == null) {
+                    com.example.shoppinglist.MainActivity.newItem();
+                }
+                else {
+                    com.example.shoppinglist.MainActivity.editSelectedItem(selectedItem);
+                }
                 getDialog().dismiss();
             }
         });
